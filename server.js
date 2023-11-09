@@ -2,7 +2,6 @@ import express from 'express';
 import cors from 'cors';
 import ws from 'ws';
 import itemRouter from './routes/item/item-routers.js';
-import itemsData from './db/items-data-db.js';
 
 const app = express();
 const port = process.env.PORT || 7070;
