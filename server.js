@@ -26,6 +26,5 @@ const server = app.listen(port, () => {
 })
 
 server.on('close', () => {
-    itemsData.data = [];
 })
 
