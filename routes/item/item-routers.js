@@ -5,6 +5,7 @@ import upload from '../../controllers/multer-config.js';
 import { extractFileName } from '../../controllers/extractFileName.js';
 import * as path from 'path';
 import { unlink } from 'fs';
+import { currentUrl } from '../../controllers/globals.js';
 
 const itemRouter = new Router();
 
@@ -98,7 +99,7 @@ itemRouter.post('/add/text', upload.none(), async (req, res) => {
 })
 
 itemRouter.post('/add/image', upload.single('content'), async (req, res) => {
-    const url = 'http://localhost:7070/media/' + req.file.filename;
+    const url = `${currentUrl}/media/` + req.file.filename;
     let id = v4();
 
     const item = { content: url, type: 'image', id: id };
@@ -108,7 +109,7 @@ itemRouter.post('/add/image', upload.single('content'), async (req, res) => {
 })
 
 itemRouter.post('/add/audio', upload.single('content'), async (req, res) => {
-    const url = 'http://localhost:7070/media/' + req.file.filename;
+    const url = `${currentUrl}/media/` + req.file.filename;
     let id = v4();
 
     let originalName = req.file.originalname.replace('â\x80\x99', "'");
@@ -125,7 +126,7 @@ itemRouter.post('/add/audio', upload.single('content'), async (req, res) => {
 })
 
 itemRouter.post('/add/video', upload.single('content'), async (req, res) => {
-    const url = 'http://localhost:7070/media/' + req.file.filename;
+    const url = `${currentUrl}/media/` + req.file.filename;
     let id = v4();
 
     let originalName = req.file.originalname.replace('â\x80\x99', "'");
